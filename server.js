@@ -15,10 +15,10 @@ const app = express();
 const {
   SPOTIFY_CLIENT_ID,
   SPOTIFY_CLIENT_SECRET,
-  SPOTIFY_CLIENT_CALLBACK_URL
+  SPOTIFY_CLIENT_CALLBACK_URL,
   ENCRYPTION_SECRET
 } = process.env;
-
+console.log(SPOTIFY_CLIENT_CALLBACK_URL)
 // middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 
