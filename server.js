@@ -47,7 +47,7 @@ app.post("/api/token", async ({body: {code: authorization_code}}, response) => {
     url: "https://accounts.spotify.com/api/token",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      "Authorization": "Basic " + btoa(SPOTIFY_CLIENT_ID + ":" + SPOTIFY_CLIENT_SECRET)
+      'Authorization': 'Basic ' + (new Buffer.from(SPOTIFY_CLIENT_ID + ':' + SPOTIFY_CLIENT_SECRET).toString('base64'))
     },
     data: {
       grant_type: "authorization_code",
@@ -89,6 +89,7 @@ app.post("/api/refresh_token", async ({body: {refresh_token}}, response) => {
   try {
     let res = await axios(config);
     let data = res.data;
+    console.log(`token: ${JSON.stringify(data)}`);
     response.set("Content-Type", "text/json").status(200).send(data);
   } catch(err) {
 
