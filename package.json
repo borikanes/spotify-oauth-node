@@ -4,13 +4,14 @@
   "description": "Spotify oauth node server",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "node --test"
   },
   "dependencies": {
-    "express": "^4.16.2",
-    "btoa": "^1.1.2",
-    "body-parser": "^1.18.2",
     "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
+    "btoa": "^1.1.2",
+    "express": "^4.16.2",
     "qs": "^6.5.1"
   },
   "engines": {
@@ -23,6 +24,8 @@
     "express"
   ],
   "devDependencies": {
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "nock": "^14.0.17",
+    "supertest": "^7.2.2"
   }
 }

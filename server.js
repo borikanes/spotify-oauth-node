@@ -99,6 +99,13 @@ app.post("/api/refresh_token", async ({body: {refresh_token}}, response) => {
 
 
 // listen for requests :)
-var listener = app.listen(8080, function () {
-  console.log("Your app is listening on port " + listener.address().port);
-});
+// Only bind the port when this file is run directly (`node server.js`). The
+// tests require this module to exercise the routes in-process, and binding 8080
+// there would fail whenever the real QA server is already running.
+if (require.main === module) {
+  var listener = app.listen(8080, function () {
+    console.log("Your app is listening on port " + listener.address().port);
+  });
+}
+
+module.exports = app;
